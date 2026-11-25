@@ -56,10 +56,6 @@ def run(cmd):
     return "Command not allowed. Type help."
 class Handler(BaseHTTPRequestHandler):
     def log_message(self,*a):pass
-    def headers(self,status=200):
-        self.send_response(status);o=self.headers_in.get("Origin","")
-        if o==ORIGIN:self.send_header("Access-Control-Allow-Origin",o);self.send_header("Vary","Origin")
-        self.send_header("Access-Control-Allow-Headers","Authorization, Content-Type");self.send_header("Access-Control-Allow-Methods","GET, POST, OPTIONS");self.send_header("Content-Type","application/json");self.send_header("Cache-Control","no-store");self.end_headers()
     def reply(self,status,obj):
         self.send_response(status);o=self.headers.get("Origin","")
         if o==ORIGIN:self.send_header("Access-Control-Allow-Origin",o);self.send_header("Vary","Origin")
